@@ -24,17 +24,25 @@ integration-tests = []
 # Jsonrpsee if the default RPC provider used in Subxt. However, it can be
 # swapped out for an alternative implementation, and so is optional.
 jsonrpsee-ws = ["jsonrpsee/async-client", "jsonrpsee/client-ws-transport"]
-jsonrpsee-web = ["jsonrpsee/async-wasm-client", "jsonrpsee/client-web-transport"]
+jsonrpsee-web = [
+  "jsonrpsee/async-wasm-client",
+  "jsonrpsee/client-web-transport",
+]
 
 [dependencies]
-codec = { package = "parity-scale-codec", version = "3.0.0", default-features = false, features = ["derive", "full"] }
+codec = { package = "parity-scale-codec", version = "3.0.0", default-features = false, features = [
+  "derive",
+  "full",
+] }
 scale-info = "2.0.0"
 scale-value = "0.6.0"
 scale-bits = "0.3"
 scale-decode = "0.4.0"
 futures = { version = "0.3.13", default-features = false }
 hex = "0.4.3"
-jsonrpsee = { version = "0.16", optional = true, features = ["jsonrpsee-types"] }
+jsonrpsee = { version = "0.16", optional = true, features = [
+  "jsonrpsee-types",
+] }
 serde = { version = "1.0.124", features = ["derive"] }
 serde_json = { version = "1.0.64", features = ["raw_value"] }
 thiserror = "1.0.24"
@@ -44,8 +52,8 @@ parking_lot = "0.12.0"
 subxt-macro = { version = "0.25.0", path = "../macro" }
 subxt-metadata = { version = "0.25.0", path = "../metadata" }
 
-sp-core = { version = "7.0.0", default-features = false  }
-sp-runtime = "7.0.0"
+sp-core = { default-features = false, package = "sp-core", git = "https://github.com/lakshya-sky/substrate.git", branch = "polkadot-v0.9.34" }
+sp-runtime = { package = "sp-runtime", git = "https://github.com/lakshya-sky/substrate.git", branch = "polkadot-v0.9.34" }
 
 frame-metadata = "15.0.0"
 derivative = "2.2.0"
@@ -55,6 +63,10 @@ getrandom = { version = "0.2", features = ["js"] }
 
 [dev-dependencies]
 bitvec = "1"
-codec = { package = "parity-scale-codec", version = "3.0.0", default-features = false, features = ["derive", "full", "bit-vec"] }
+codec = { package = "parity-scale-codec", version = "3.0.0", default-features = false, features = [
+  "derive",
+  "full",
+  "bit-vec",
+] }
 scale-info = { version = "2.0.0", features = ["bit-vec"] }
 tokio = { version = "1.8", features = ["macros", "time", "rt-multi-thread"] }
